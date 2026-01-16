@@ -1665,19 +1665,14 @@ html {
 
 
 
-
-
-
-
 /* ============================= */
 /* TIMELINE SECTION WITH BG      */
 /* ============================= */
-
 .timeline-section {
   position: relative;
   padding: 80px 0;
   background: url("images/about.png") no-repeat center center;
-  background-attachment: fixed;     /* FIXED / PARALLAX */
+  background-attachment: fixed; /* FIXED / PARALLAX */
   background-size: cover;
   min-height: 100vh;
   overflow: hidden;
@@ -1699,246 +1694,66 @@ html {
   z-index: 2;
 }
 
-  .timeline-header {
-    text-align: center;
-      margin-top: 60px;
-    margin-bottom: 40px; /* space between header and timeline */
-  }
-
-  .timeline-header h2 {
-     font-family: 'Montserrat', sans-serif;
-    color: #000080;      /* navy text */
-    margin-bottom: 10px;
-    font-size: 2.5rem;
-
-  }
-
-  .timeline-header hr {
-    width: 700px;        /* line length */
-    height: 2px;         /* line thickness */
-    background-color: #d4af37; /* gold line */
-    border: none;        /* remove default hr border */
-    margin: 0 auto;      /* center the line */
-    border-radius: 2px;  /* optional rounded edges */
-  }
-
-
-
-
-
-  .timeline {
-    position: relative;
-    width: 100%;
-    max-width: 1100px;
-    margin: 80px auto;
-    display: flex;
-    flex-direction: column;
-    gap: 80px;
-  }
-
-  /* Center vertical line */
-  .timeline::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    width: 2px;
-    background: #000000;
-    transform: translateX(-50%);
-    z-index: 1;
-  }
-
-  /* Each timeline event */
-  .timeline-item {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: start;
-    position: relative;
-    z-index: 2;
-  }
-
-  /* The circular dot */
-  .timeline-item::before {
-    content: "";
-    position: absolute;
-    top: 17%;
-    left: 50%;
-    width: 10px;
-    height: 10px;
-    background: #fff;
-    border: 4px solid #000000;
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 3;
-  }
-
-  /* ---- ARROW FROM DOT POINTING TO YEAR ---- */
-  .timeline-item::after {
-    content: "";
-    position: absolute;
-    top: 17%; /* same as dot */
-    width: 50px; /* arrow length */
-    height: 2px;
-    background: #000000;
-    z-index: 2;
-  }
-
-  /* Left side: arrow goes from dot → right */
-  .timeline-item.left::after {
-    left: calc(50% + 9px); /* starts just outside the dot */
-  }
-
-  /* Right side: arrow goes from dot → left */
-  .timeline-item.right::after {
-    right: calc(50% + 9px);
-  }
-
-  /* Triangle arrowheads */
-  .timeline-item.left::after::after,
-  .timeline-item.right::after::after {
-    content: "";
-    position: absolute;
-    top: -4px;
-    width: 0;
-    height: 0;
-    border-top: 5px solid transparent;
-    border-bottom: 5px solid transparent;
-  }
-
-  .timeline-item.left::after::after {
-    right: -8px;
-    border-left: 8px solid #4CAF50;
-  }
-
-  .timeline-item.right::after::after {
-    left: -8px;
-    border-right: 8px solid #4CAF50;
-  }
-
-  /* ---------------------------------------- */
-
-  /* Left-aligned layout */
-  .timeline-item.left .timeline-image {
-    justify-self: end;
-    margin-right: 60px; /* adds gap between image and center line */
-  }
-
-  .timeline-item.left .timeline-content {
-    text-align: left;
-    padding-left: 70px;
-  }
-
-  /* Right-aligned layout */
-  .timeline-item.right .timeline-image {
-    justify-self: start;
-    margin-left: 60px; /* adds gap between image and center line */
-  }
-
-  .timeline-item.right .timeline-content {
-    text-align: right;
-    padding-right: 70px;
-  }
-
-  /* Image styling */
-  .timeline-image {
-    width: 400px;          /* fixed container width */
-    height: 300px;         /* fixed height for all images */
-    border-radius: 10px;
-    overflow: hidden;      /* ensures image doesn't overflow rounded corners */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45); /* stronger visibility */
-  }
-
-  .timeline-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;     /* maintains aspect ratio and fills the box */
-    display: block;        /* removes small gaps under images */
-  }
-
-  .timeline-content {
-    margin-top: 15px;     /* space from the top edge of the container */
-    padding: 10px 20px;   /* inner spacing: top/bottom 10px, left/right 20px */
-  }
-
-  /* Header inside content */
-  .timeline-content h3 {
-    font-family: 'Raleway', sans-serif;
-    display: inline-block;
-    font-size: 1.3rem;
-    color: #fff;
-    background: #000080;
-    padding: 10px 40px;          /* horizontal and vertical padding */
-    border-radius: 25px;         /* pill-like rounded corners */
-    margin-bottom: 12px;         /* slightly bigger space after the heading */
-    letter-spacing: 1px;
-    text-align: center;
-  }
-
-  /* Paragraph text */
-  .timeline-content p {
-    font-family: 'Open Sans', sans-serif;
-    color: #666;
-    font-size: 1.2rem;
-    line-height: 1.5;
-    max-width: 500px;
-    margin: 0;
-  }
-
-  /* Timeline list items (like paragraph) */
-.timeline-content ul.timeline-list li {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1.2rem;     /* matches your <p> font size */
-  line-height: 1.5;      /* matches paragraph line height */
-  max-width: 500px;      /* same as paragraph */
-  margin: 0 0 10px 0;    /* small spacing between list items */
-  word-wrap: break-word; /* prevent overflow */
+/* -------------------- */
+/* TIMELINE HEADER      */
+/* -------------------- */
+.timeline-header {
+  text-align: center;
+  margin-top: 60px;
+  margin-bottom: 40px; /* space between header and timeline */
 }
 
-
-
-
-  /* Highlighted gold text */
-  .timeline-content .highlight {
-    color: #d4af37;
-    font-weight: bold;
-    font-style: italic;
-    padding: 2px 4px;
-    border-radius: 4px;
-  }
-
-  /* Navy blue strong text */
-  .timeline-content .navy {
-    color: #000080;
-  }
-
-  /* Bold emphasized words (e.g., 300-seat, BPO) */
-  .timeline-content .bold {
-    color: #000080;                   /* pure black text for strong contrast */
-    font-weight: 700;
-    letter-spacing: 0.3px;
-  }
-/* ======================================= */
-/* TIMELINE SCROLL ANIMATION               */
-/* ======================================= */
-
-/* Hidden by default */
-.timeline-section h2,
-.timeline-section hr {
-  opacity: 0;
-  transform: scale(0.9);
-  transition: transform 0.6s ease, opacity 0.6s ease;
+.timeline-header h2 {
+  font-family: 'Montserrat', sans-serif;
+  color: #000080; /* navy text */
+  margin-bottom: 10px;
+  font-size: 2.5rem;
 }
 
-/* When visible - add .show class via JS */
-.timeline-section h2.show,
-.timeline-section hr.show {
-  opacity: 1;
-  transform: scale(1);
+.timeline-header hr {
+  width: 700px; /* line length */
+  height: 2px; /* line thickness */
+  background-color: #d4af37; /* gold line */
+  border: none; /* remove default hr border */
+  margin: 0 auto; /* center the line */
+  border-radius: 2px; /* optional rounded edges */
 }
 
+/* -------------------- */
+/* TIMELINE CONTAINER    */
+/* -------------------- */
+.timeline {
+  position: relative;
+  width: 100%;
+  max-width: 1500px;
+  margin: 80px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
 
+/* Center vertical line */
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: #000000;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+/* -------------------- */
+/* TIMELINE ITEM         */
+/* -------------------- */
 .timeline-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  position: relative;
+  z-index: 2;
   opacity: 0;
   transform: translateY(40px);
   transition: all 0.8s ease;
@@ -1967,129 +1782,441 @@ html {
   transform: translateX(0);
 }
 
+/* -------------------- */
+/* DOT & ARROW           */
+/* -------------------- */
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  top: 13%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  background: #fff;
+  border: 4px solid #000000;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+}
+
+.timeline-item::after {
+  content: "";
+  position: absolute;
+  top: 13%;
+  width: 50px;
+  height: 2px;
+  background: #000000;
+  z-index: 2;
+}
+
+.timeline-item.left::after {
+  left: calc(50% + 9px);
+}
+
+.timeline-item.right::after {
+  right: calc(50% + 9px);
+}
+
+/* Arrow triangle heads */
+.timeline-item.left::after::after,
+.timeline-item.right::after::after {
+  content: "";
+  position: absolute;
+  top: -4px;
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+}
+
+.timeline-item.left::after::after {
+  right: -8px;
+  border-left: 8px solid #4CAF50;
+}
+
+.timeline-item.right::after::after {
+  left: -8px;
+  border-right: 8px solid #4CAF50;
+}
+
+/* -------------------- */
+/* TIMELINE CONTENT      */
+/* -------------------- */
+.timeline-item.left .timeline-content {
+  text-align: left;
+  padding-left: 0;
+  padding-right: 60px;
+}
+
+.timeline-item.right .timeline-content {
+  text-align: right;
+  padding-right: 0;
+  padding-left: 60px;
+}
+
+.timeline-content {
+  margin-top: 15px;
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timeline-content h3 {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.3rem;
+  color: #fff;
+  background: #000080;
+  padding: 10px 40px;
+  border-radius: 25px;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.timeline-content p {
+  font-family: 'Open Sans', sans-serif;
+  color: #000080; /* navy as default */
+  font-size: 1.2rem;
+  line-height: 1.5;
+  max-width: 500px;
+  margin: 0;
+}
+
+.timeline-content ul.timeline-list li {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  max-width: 500px;
+  margin: 0 0 10px 0;
+  word-wrap: break-word;
+}
+
+.timeline-content .highlight {
+  color: #d4af37;
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* Navy blue strong text */
+.timeline-content .navy {
+  color: #000080;
+}
+
+/* Bold emphasized words */
+.timeline-content .bold {
+  color: #000080;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+/* -------------------- */
+/* IMAGE + THUMBNAILS    */
+/* -------------------- */
+.timeline-gallery .image-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.tl-image {
+  width: 600px;
+  height: 500px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.45);
+}
+
+.tl-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.tl-thumb-gallery {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: nowrap;
+  max-width: 600px;
+}
+
+.tl-thumb {
+  width: 22%;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.tl-thumb:hover {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+
+.tl-thumb.active-thumb {
+  outline: 2px solid #000080;
+  opacity: 0.9;
+}
+
+/* -------------------- */
+/* SCROLL ANIMATION      */
+/* -------------------- */
+.timeline-section h2,
+.timeline-section hr {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+.timeline-section h2.show,
+.timeline-section hr.show {
+  opacity: 1;
+  transform: scale(1);
+}
 
 @media (max-width: 768px) {
-  /* Timeline container: Centers all items horizontally */
+
+  /* -------------------- */
+  /* TIMELINE STRUCTURE   */
+  /* -------------------- */
+
   .timeline {
-    display: flex;
-    flex-direction: column;
-    align-items: center;  /* Centers the timeline items themselves */
-    gap: 40px;
-    padding: 0 15px; /* Ensures content doesn't touch screen edges */
+    gap: 60px;
+  }
+  .timeline-section {
+    padding-left: 16px;
+    padding-right: 16px;
   }
 
-  /* Timeline items stack vertically and are centered */
+  .timeline::before {
+    display: none;
+  }
+
   .timeline-item {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centers image & content within the item */
+    align-items: center;
     text-align: center;
-    width:90%;
-    max-width: 450px; /* Constrains the maximum width of the content block */
-    margin: 0 auto;  /* Centers the block within the timeline */
-    gap: 15px;
+    transform: none;
+    
   }
 
-  /* Remove dot and arrow */
+  .timeline-item.left,
+  .timeline-item.right {
+    transform: none;
+  }
+
   .timeline-item::before,
   .timeline-item::after {
     display: none;
   }
 
-  /* Force image first and responsive */
-  .timeline-image {
-    order: 0;
-    width: 90%;
-    max-width: 400px;
-    height: auto;
-  }
+  /* -------------------- */
+  /* IMAGE (FIRST)        */
+  /* -------------------- */
 
-  /* Timeline content */
-  .timeline-content {
-    max-width: 90%;
+  .timeline-gallery .image-wrapper {
     order: 1;
-    padding: 0 10px;  /* Added: extra horizontal padding for text */
-    text-align: center;
-    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
-  /* Remove left/right alignment and ensure content centers */
-  .timeline-item.left .timeline-content,
-  .timeline-item.right .timeline-content,
-  .timeline-item.left .timeline-image,
-  .timeline-item.right .timeline-image {
-    margin: 0 auto; 
-    justify-self: center;
-    padding: 0;
-  }
-
-  /* Timeline content text adjustments */
-  .timeline-content h3 {
-    font-size: 1rem;    /* slightly smaller on mobile */
-    padding: 8px 20px;    /* reduces horizontal padding while keeping pill shape */
+  .tl-image {
+    width: 90%;
+    max-width: 420px;
+    aspect-ratio: 4 / 3;
+    height: auto;
     margin: 0 auto;
-    box-sizing: border-box;
   }
 
-  .timeline-content p {
-    font-size: 1rem;       /* suitable for mobile readability */
-    line-height: 1.6;      /* better spacing for text */
-    max-width: 100%;
-    margin: 0 auto;        /* centers the paragraph */
-    word-wrap: break-word; /* prevent overflow */
-  }
+  /* -------------------- */
+  /* THUMBNAILS (SECOND)  */
+  /* -------------------- */
 
-  /* Hide vertical line */
-  .timeline::before {
-    display: none;
+  .tl-thumb-gallery {
+    order: 2;
+     scroll-snap-type: x mandatory;
+    width: 100%;
+      padding-left: 10px; 
+        padding-right: 10px;
+    max-width: 350px;
+    margin: 12px auto 0;
+    display: flex;
+    justify-content: flex-start;
+    gap: 14px;
+    padding: 0 10px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
   }
-
-  /* Timeline header adjustments */
-  .timeline-header hr {
-    width: 150px;
-    height: 2px;
-    margin: 10px auto; /* Centered */
-  }
-
-  .timeline-header h2 {
-    font-size: 1.5rem; /* slightly smaller on mobile */
-  }
-
-  /* Hide timeline dot and arrows */
-  .timeline-item::before,
-  .timeline-item::after,
-  .timeline-item.left::before,
-  .timeline-item.right::before,
-  .timeline-item.left::after,
-  .timeline-item.right::after {
-    display: none !important;
-  }
-
-  /* Optional: Remove list bullets inside timeline content */
-  .timeline-content ul {
-    list-style: none; /* removes default bullets */
-    padding-left: 0;  /* ensures it aligns with the text */
-    margin-left: 0;   /* avoids extra indentation */
-  }
-
-  .timeline-content ul li {
-    position: relative;
-    padding-left: 0;  /* no extra padding for items */
-  }
- .timeline-content ul.timeline-list li {
-    max-width: 100%;  /* fit mobile width */
-    font-size: 1rem;  /* slightly smaller for mobile */
-    line-height: 1.6; /* better readability */
-    margin-bottom: 8px;
-  }
-
+  .tl-thumb-gallery::after {
+  content: "";
+  flex: 0 0 10px; /* same as padding-right */
 }
 
+  .tl-thumb {
+    flex: 0 0 auto;
+    width: 100px;
+    height: 60px;
+    scroll-snap-align: start;
+  }
 
+  /* -------------------- */
+  /* CONTENT (TRUE CENTER) */
+  /* -------------------- */
 
+  .timeline-content {
+    order: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 
+    /* 🔴 IMPORTANT FIX */
+    padding: 20px 16px;
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+  }
 
+  /* RESET DESKTOP LEFT/RIGHT PADDING */
+  .timeline-item.left .timeline-content,
+  .timeline-item.right .timeline-content {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
 
+  .timeline-content h3 {
+    text-align: center;
+    margin: 20px auto 12px;
+    font-size: 1.1rem;
+  }
+
+  .timeline-content p,
+  .timeline-content ul.timeline-list li {
+    max-width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 1rem; /* 16px */
+   line-height: 1.4;
+  }
+
+  /* -------------------- */
+  /* HEADER               */
+  /* -------------------- */
+
+  .timeline-header h2 {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
+  .timeline-header hr {
+    width: 90%;
+  }
+}
+@media (max-width: 1024px) {
+
+  /* -------------------- */
+  /* TIMELINE SECTION     */
+  /* -------------------- */
+  .timeline-section {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  /* -------------------- */
+  /* TIMELINE CONTAINER   */
+  /* -------------------- */
+  .timeline {
+    gap: 60px;
+    margin: 60px auto;
+  }
+
+  /* Center vertical line */
+  .timeline::before {
+    left: 50%;
+    width: 2px;
+  }
+
+  /* -------------------- */
+  /* TIMELINE ITEM        */
+  /* -------------------- */
+  .timeline-item {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .timeline-item.left .timeline-content,
+  .timeline-item.right .timeline-content {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  /* -------------------- */
+  /* IMAGE + THUMBNAILS   */
+  /* -------------------- */
+  .timeline-gallery .image-wrapper {
+    gap: 10px;
+  }
+
+  .tl-image {
+    width: 90%;           /* scale down from 600px */
+    max-width: 400px;     /* ensure it doesn’t exceed the center line */
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  }
+
+  .tl-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .tl-thumb-gallery {
+    max-width: 500px;     /* slightly smaller than big image */
+    gap: 14px;
+    justify-content: center;
+  }
+
+  .tl-thumb {
+    width: 80px;
+    height: 55px;
+  }
+
+  /* -------------------- */
+  /* CONTENT (TEXT)       */
+  /* -------------------- */
+  .timeline-content h3 {
+    font-size: 1.2rem;
+    padding: 8px 30px;
+  }
+
+  .timeline-content p,
+  .timeline-content ul.timeline-list li {
+    font-size: 1.1rem;
+    max-width: 480px;
+  }
+
+  /* -------------------- */
+  /* HEADER               */
+  /* -------------------- */
+  .timeline-header h2 {
+    font-size: 2.2rem;
+  }
+
+  .timeline-header hr {
+    width: 90%;
+  }
+}
 
 
 

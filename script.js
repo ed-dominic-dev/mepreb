@@ -75,6 +75,48 @@ highlightSections.forEach(section => {
     showImage(currentIndex);
 });
 
+
+// Timeline Gallery Auto-Swiper
+const timelineGalleries = document.querySelectorAll(".timeline-gallery");
+
+timelineGalleries.forEach(gallery => {
+  const mainImg = gallery.querySelector(".tl-image img");
+  const thumbs = gallery.querySelectorAll(".tl-thumb-gallery .tl-thumb");
+  if (!mainImg || thumbs.length === 0) return;
+
+  let currentIndex = 0;
+
+  function showImage(index) {
+    // Fade out, change image, fade in
+    mainImg.style.opacity = 0;
+    setTimeout(() => {
+      mainImg.src = thumbs[index].src;
+      mainImg.style.opacity = 1;
+
+      // Update active thumbnail
+      thumbs.forEach(t => t.classList.remove("active-thumb"));
+      thumbs[index].classList.add("active-thumb");
+    }, 250);
+  }
+
+  // Click event on thumbnails
+  thumbs.forEach((thumb, index) => {
+    thumb.addEventListener("click", () => {
+      currentIndex = index;
+      showImage(currentIndex);
+    });
+  });
+
+  // Auto-rotate every 3 seconds
+  setInterval(() => {
+    currentIndex = (currentIndex + 1) % thumbs.length;
+    showImage(currentIndex);
+  }, 3000);
+
+  // Initial display
+  showImage(currentIndex);
+});
+
 // ==============================
 // SEARCH / FILTER FUNCTIONALITY (Properties)
 // ==============================
